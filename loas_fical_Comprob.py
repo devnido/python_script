@@ -42,12 +42,14 @@ for filename in files:
       df = chunk.iloc[:,:56]
       df['StoreNum'] = extracted_number
       cols = list(df.columns)
+      # por que cambia la columna 2  ?
       cols.insert(2, cols.pop(cols.index('StoreNum')))
       df = df[cols]
       df.replace([np.inf, -np.inf, np.nan], 0, inplace=True)
-      df = df.astype(dwh_howpaid_columns.dtypes.to_dict())   
-      df['OPENDATE'] = df['OPENDATE'].dt.floor('T')
-      df['OPENDATE'] = pd.to_datetime(df['OPENDATE'])
+      df = df.astype(dwh_fiscal_columns.dtypes.to_dict())   
+      df['OpenDate'] = df['OpenDate'].dt.floor('T')
+      df['OpenDate'] = pd.to_datetime(df['OpenDate'])
+      # por que selecciona columnas 26 ?
       df = df.iloc[:,:26]
       howpaid = pd.concat([howpaid, df]) 
 

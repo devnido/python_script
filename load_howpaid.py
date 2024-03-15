@@ -97,10 +97,11 @@ for filename in files:
             cols.insert(2, cols.pop(cols.index('StoreNum')))
             # reordenar las columnas
             df = df[cols]
-            
+
             df.replace([np.inf, -np.inf, np.nan], 0, inplace=True)
 
             df = df.astype(dwh_howpaid_columns.dtypes.to_dict())   
+            
             df['OPENDATE'] = df['OPENDATE'].dt.floor('T')
             df['OPENDATE'] = pd.to_datetime(df['OPENDATE'])
             df = df.iloc[:,:26]
