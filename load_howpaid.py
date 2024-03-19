@@ -109,7 +109,8 @@ for filename in files:
 
         missing_rows_howpaid = howpaid[~howpaid[['HowPaidLink', 'StoreNum']].apply(tuple, axis=1).isin(dwh_howpaid[['HOWPAIDLINK', 'STORENUM']].apply(tuple, axis=1))]
 
-
+# 87.642
+        # 38.784
         cursor = conn.cursor()
 
 
